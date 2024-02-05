@@ -1,0 +1,8 @@
+#Request
+int64 a
+int64 b
+
+# 분리
+---
+# 대답
+int64 sum
