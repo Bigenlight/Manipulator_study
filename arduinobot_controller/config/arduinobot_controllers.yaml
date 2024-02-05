@@ -1,0 +1,66 @@
+controller_manager: # 노드
+  ros__parameters: # 파라미터
+    
+    # 컨트롤 루프는 10hz로 작동 
+    update_rate: 10
+
+    # 컨트롤러
+    arm_controller:
+      # 명령을 보낼때마다 각 조인트에 대한 위치로 보냄
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    
+    gripper_controller:
+    # 원래 위와 같은 방식으로 보내지만 연습이니 다른걸 써볼 것
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    # gripper_controller:
+    #   # 이 명령은 목적지를 보내고 그냥 그에 따라 가는거임
+    #   type: forward_command_controller/ForwardCommandController
+
+
+    # 조인 상태 표시
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+
+
+# 이제는 위 세 컨트롤러에 대해 설정해야함
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+    
+    # 위치 제어
+    command_interfaces:
+      - position
+
+    #피드백 위치
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+
+gripper_controller:
+  ros__parameters:
+    joints:
+      - joint_4
+    
+    # interface_name: position
+
+    #지금은 안씀
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+    #쓰고 씨메이크
