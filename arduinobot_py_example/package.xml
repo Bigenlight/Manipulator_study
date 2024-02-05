@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>arduinobot_py_example</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="theo@todo.todo">theo</maintainer>
+  <license>TODO: License declaration</license>
+
+  <!-- 추가! -->
+  <exec_depend>rclpy</exec_depend>
+  <!-- 로스2랑 연결 -->
+  <exec_depend>std_msgs</exec_depend>
+  <!-- std_msgs 라이브러리랑 연결 -->
+
+  <!-- 추가-->
+  <exec_depend>rclpy_interfaces</exec_depend>
+  <!--추가-->
+  <exec_depend>arduinobot_msgs</exec_depend>
+
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
