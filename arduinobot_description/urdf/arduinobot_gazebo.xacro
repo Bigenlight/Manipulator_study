@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki.xacro" name="arduinobot">
+
+    <gazebo>
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <!--topic-->
+            <robot_param>robot_description</robot_param>
+            <!-- node-->
+            <robot_param_node>robot_state_publisher</robot_param_node>
+            <!--ros2 control library 파라미터 설정-->
+            <parameters>$(find arduinobot_controller)/config/arduinobot_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+
+
+</robot> 

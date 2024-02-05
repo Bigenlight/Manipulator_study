@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<robot name="arduinobot" xmlns:xacro="http://www.ros.org/wiki.xacro">
+
+    <xacro:property name="PI" value= "3.14159"/>
+    <xacro:property name="effort" value= "30.0"/>
+    <xacro:property name="velocity" value= "10.0"/>
+    
+    <!-- 로스2 제어 태그-->
+    <ros2_control name="RobotSystem" type="system">
+        <hardware>
+            <!--가제보 하드웨어 플러그인-->
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+
+        <joint name="joint_1">
+            <!-- 하드웨어 명령 보내는 태그-->
+            <command_interface name="position">
+                <!--파라미터, 최대 90, 최소 -90-->
+                <param name="max">${PI/2}</param>
+                <param name="min">-${PI/2}</param>
+            </command_interface>
+            <!--하드웨어에서 명령 읽기-->
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_2">
+            <!-- 하드웨어 명령 보내는 태그-->
+            <command_interface name="position">
+                <param name="max">${PI/2}</param>
+                <param name="min">-${PI/2}</param>
+            </command_interface>
+            <!--하드웨어에서 명령 읽기-->
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_3">
+            <!-- 하드웨어 명령 보내는 태그-->
+            <command_interface name="position">
+                <param name="max">${PI/2}</param>
+                <param name="min">-${PI/2}</param>
+            </command_interface>
+            <!--하드웨어에서 명령 읽기-->
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_4">
+            <!-- 하드웨어 명령 보내는 태그-->
+            <command_interface name="position">
+                <param name="max">0.0</param>
+                <param name="min">-${PI/2}</param>
+            </command_interface>
+            <!--하드웨어에서 명령 읽기-->
+            <state_interface name="position"/>
+        </joint>
+
+        <joint name="joint_5">
+            <!--하지만 4와 5는 거울 마주 보듯이 움직임, 그래서 파라미터 추가 지정-->
+            <!-- 따라하기 파라미터-->
+            <param name="mimic">joint_4</param>
+            <!--움직임 곱세, -1해서 반대로 움직는 것 처럼-->
+            <param name="multiplier">-1</param>
+            <!-- 하드웨어 명령 보내는 태그-->
+            <command_interface name="position">
+                <param name="max">${PI/2}</param>
+                <param name="min">0.0</param>
+            </command_interface>
+            <!--하드웨어에서 명령 읽기-->
+            <state_interface name="position"/>
+        </joint>
+        
+
+    </ros2_control>
+
+
+</robot> 
