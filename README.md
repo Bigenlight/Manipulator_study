@@ -1,6 +1,7 @@
 # Manipulator_study
 
-This is the code of an 3 dof manipulator.
+This is the code of an 3 dof manipulator running in Ubuntu Linux 22.04 and using ROS2 humble. 
+
 
 Not complete yet. - 2024.02.05
 
